@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "./Calculate.css";
 
 export default function Calculate() {
   const [value, setValue] = useState("");
@@ -37,224 +38,160 @@ export default function Calculate() {
     <div className="Calculate">
       <div className="container">
         <form>
-          <div className="row mb-5 mt-5 ">
-            <div className="col-sm-6">
-              <input type="text" autoFocus="on" value={value} className="p-5" />
-            </div>
-          </div>
-
-          <div className="keypad-buttons">
-            <div className="row">
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={switchON}
-                  onDoubleClick={switchOff}
-                  name="On"
-                >
-                  On/Off
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleBackSpace}
-                  name="Del"
-                >
-                  Del
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="("
-                >
-                  (
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name=")"
-                >
-                  )
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="*"
-                >
-                  *
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="/"
-                >
-                  /
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="-"
-                >
-                  -
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="+"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="9"
-                >
-                  9
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="8"
-                >
-                  8
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="7"
-                >
-                  7
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="6"
-                >
-                  6
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="5"
-                >
-                  5
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="4"
-                >
-                  4
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="3"
-                >
-                  3
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="2"
-                >
-                  2
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="1"
-                >
-                  1
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleNumber}
-                  name="0"
-                >
-                  0
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleClear}
-                  name=" "
-                >
-                  Clr
-                </button>
-              </div>
-              <div className="col-sm-1">
-                <button
-                  className="p-3 "
-                  type="button"
-                  onClick={handleCalculations}
-                  name="="
-                >
-                  =
-                </button>
-              </div>
-            </div>
+          <input type="text" autoFocus="on" value={value} className="p-3" />
+          <div className="keypad">
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleBackSpace}
+              name="Del"
+            >
+              Del
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="("
+            >
+              (
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name=")"
+            >
+              )
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="*"
+            >
+              *
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="/"
+            >
+              /
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="-"
+            >
+              -
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="+"
+            >
+              +
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="9"
+            >
+              9
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="8"
+            >
+              8
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="7"
+            >
+              7
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="6"
+            >
+              6
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="5"
+            >
+              5
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="4"
+            >
+              4
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="3"
+            >
+              3
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="2"
+            >
+              2
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="1"
+            >
+              1
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleNumber}
+              name="0"
+            >
+              0
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleClear}
+              name=" "
+            >
+              Clr
+            </button>
+            <button
+              className="p-3 "
+              type="button"
+              onClick={handleCalculations}
+              name="="
+            >
+              =
+            </button>
           </div>
         </form>
       </div>
