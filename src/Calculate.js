@@ -4,7 +4,7 @@ import "./Calculate.css";
 
 export default function Calculate() {
   const [value, setValue] = useState("");
-  const [ready, setReady] = useState();
+  const [inputDisplay, setInputDisplay] = useState({ ready: false });
 
   function handleNumber(event) {
     setValue(value + event.target.name);
@@ -18,182 +18,221 @@ export default function Calculate() {
   }
 
   function handleCalculations() {
-    setValue(eval(value));
+    if (inputDisplay.ready) {
+      try {
+        const result = eval(value);
+        setValue(result.toString());
+      } catch (error) {
+        setValue("Error");
+      }
+    }
   }
 
-  function switchON(event) {
-    setReady({ ready: true });
-    // when button is clicked
-    //input text should switch on
+  function switchToggle() {
+    setInputDisplay((prev) => ({ ready: !prev.ready }));
+    setValue("");
   }
-
-  function switchOff(event) {
-    setReady({ ready: false });
-    //when clicked twice switch off
-  }
-  //function :
-  //should return null if setvalue ==false
 
   return (
-    <div className="Calculate">
+    <div className="Calculate ">
       <div className="container">
-        <form>
-          <input type="text" autoFocus="on" value={value} className="p-3" />
-          <div className="keypad">
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleBackSpace}
-              name="Del"
-            >
-              Del
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="("
-            >
-              (
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name=")"
-            >
-              )
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="*"
-            >
-              *
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="/"
-            >
-              /
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="-"
-            >
-              -
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="+"
-            >
-              +
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="9"
-            >
-              9
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="8"
-            >
-              8
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="7"
-            >
-              7
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="6"
-            >
-              6
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="5"
-            >
-              5
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="4"
-            >
-              4
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="3"
-            >
-              3
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="2"
-            >
-              2
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="1"
-            >
-              1
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleNumber}
-              name="0"
-            >
-              0
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleClear}
-              name=" "
-            >
-              Clr
-            </button>
-            <button
-              className="p-3 "
-              type="button"
-              onClick={handleCalculations}
-              name="="
-            >
-              =
-            </button>
-          </div>
-        </form>
+        <div className="border">
+          <form>
+            <input
+              type="text"
+              autoFocus="on"
+              value={value}
+              className="p-3"
+              readOnly
+            />
+            <div className="keypad">
+              <button
+                className="p-2"
+                type="button"
+                onClick={switchToggle}
+                name={inputDisplay ? "On" : "Off"}
+              >
+                On
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="("
+                disabled={!inputDisplay.ready}
+              >
+                (
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name=")"
+                disabled={!inputDisplay.ready}
+              >
+                )
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="*"
+                disabled={!inputDisplay.ready}
+              >
+                *
+              </button>
+
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="9"
+                disabled={!inputDisplay.ready}
+              >
+                9
+              </button>
+
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="8"
+                disabled={!inputDisplay.ready}
+              >
+                8
+              </button>
+
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="7"
+                disabled={!inputDisplay.ready}
+              >
+                7
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="+"
+                disabled={!inputDisplay.ready}
+              >
+                +
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="6"
+                disabled={!inputDisplay.ready}
+              >
+                6
+              </button>
+
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="5"
+                disabled={!inputDisplay.ready}
+              >
+                5
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="4"
+                disabled={!inputDisplay.ready}
+              >
+                4
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="-"
+                disabled={!inputDisplay.ready}
+              >
+                -
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="3"
+                disabled={!inputDisplay.ready}
+              >
+                3
+              </button>
+
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="2"
+                disabled={!inputDisplay.ready}
+              >
+                2
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="1"
+                disabled={!inputDisplay.ready}
+              >
+                1
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="/"
+                disabled={!inputDisplay.ready}
+              >
+                /
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleNumber}
+                name="0"
+                disabled={!inputDisplay.ready}
+              >
+                0
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleClear}
+                disabled={!inputDisplay.ready}
+                name=" "
+              >
+                Clr
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleBackSpace}
+                disabled={!inputDisplay.ready}
+                name="Del"
+              >
+                Del
+              </button>
+              <button
+                className="p-2"
+                type="button"
+                onClick={handleCalculations}
+                disabled={!inputDisplay.ready}
+                name="="
+              >
+                =
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
